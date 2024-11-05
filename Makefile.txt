@@ -1,15 +1,18 @@
 
-main: main.o datos.o calculos.o
-    -o main main.o datos.o calculos.o
+main: main.o datos.o calculos.o auth.o
+    gcc -o main main.o datos.o calculos.o auth.o
 
-main.o: main.c datos.h calculos.h
-    -c main.c
+main.o: main.c datos.h calculos.h auth.h
+    gcc -c main.c
 
 datos.o: datos.c datos.h
-    -c datos.c
+    gcc -c datos.c
 
 calculos.o: calculos.c calculos.h
-    -c calculos.c
+    gcc -c calculos.c
 
+auth.o: auth.c auth.h
+	gcc -c auth.c
+    
 clean:
 	rm -f *.o *.s main
